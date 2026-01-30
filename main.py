@@ -1,0 +1,1 @@
+#pip install pyqt6 pyqt6-tools
