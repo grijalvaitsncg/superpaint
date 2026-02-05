@@ -3,7 +3,7 @@
 from PyQt6 import QtWidgets, uic
 import sys
 from controller import MainController
-
+from canvas import Canvas
 class Ventana(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
