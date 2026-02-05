@@ -13,7 +13,9 @@ class Canvas(QWidget):
         self.last_point = QPoint()
         self.pen_color = QColor("#FFF")
         self.pen_width = 2
-       
+    def paintEvent(self, event):
+        with QPainter(self) as painter:
+            painter.drawImage(event.rect(), self.image, event.rect())
     def resizeEvent(self, event):
         
         if self.width() > self.image.width() or self.height() > self.image.height():
