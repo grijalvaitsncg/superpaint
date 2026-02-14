@@ -95,17 +95,50 @@ class Canvas(QWidget):
                 painter.drawLine(0,div*x,w,div*x)
         self.update()
     def draw_star(self, value):
+        self.clear()
         with QPainter(self.image) as painter:
-            painter.setPen(QPen(QColor("#ff00000"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap,Qt.PenJoinStyle.RoundJoin))
+            painter.setPen(QPen(QColor("#fff"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap,Qt.PenJoinStyle.RoundJoin))
             w = self.image.width()
             h = self.image.height()
             mid_w = w // 2
-            div = int(mid_w/ int(value)) #600/10
-            self.clear()
-           
             mid_h = h // 2
+            div = int(mid_w/ int(value)) #300/10
             painter.drawLine(mid_h,0,mid_w,h )
             painter.drawLine(0,mid_h,w,mid_h)
-            for x in range(0,div):
+            for x in range(1,value):
                 painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h )
+                painter.drawLine(mid_w,div*x, (mid_w- (div*x )),mid_h )
+                
         self.update()
+    def draw_f(self, value):
+        self.clear()
+        with QPainter(self.image) as painter:
+            painter.setPen(QPen(QColor("#fff"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap,Qt.PenJoinStyle.RoundJoin))
+            w = self.image.width()
+            h = self.image.height()
+            mid_w = w // 2
+            mid_h = h // 2
+            div = int(mid_w/ int(value)) #300/10
+            painter.drawLine(mid_h,0,mid_w,h )
+            painter.drawLine(0,mid_h,w,mid_h)
+            for x in range(1,value):
+                painter.drawLine()
+        self.update()
+    
+    def draw_keyboard(self,value):
+        self.clear()
+        with QPainter(self.image) as painter:
+           
+            w = self.image.width()
+            h = self.image.height()
+            for x in range(1,value):
+                painter.setPen(Qt.PenStyle.NoPen)
+                #Dibuja el cuadro blanco
+                painter.setBrush("#FFF")
+                rect = QRectF(10,10,30,30)
+                painter.drawRect(rect)
+                #dibuja el cuadro negro
+                painter.setPen(Qt.PenStyle.NoPen)
+                painter.setBrush("#000")
+                rect2 = QRectF(40,10,30,30)
+                painter.drawRect(rect2)
